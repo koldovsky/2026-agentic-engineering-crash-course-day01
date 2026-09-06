@@ -39,3 +39,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# course additions
+.vitest/
+CLAUDE.local.md
+.claude/settings.local.json
