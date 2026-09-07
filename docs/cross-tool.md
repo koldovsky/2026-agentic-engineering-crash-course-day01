@@ -6,7 +6,7 @@
 
 | Поняття | Claude Code 2.1.x | Cursor 3.x | Codex CLI 0.15x |
 |---|---|---|---|
-| Рівень 1 «агент пропонує — ви вирішуєте» | `--permission-mode default` (у UI — Manual); у проєкті `permissions.defaultMode: "default"` | Run Mode **Allowlist** з порожнім allowlist (режим «Ask Every Time» прибрано у 3.5) | `approval_policy = "on-request"` (або `"untrusted"`) + `sandbox_mode = "workspace-write"` |
+| Рівень 1 «агент пропонує — ви вирішуєте» | `--permission-mode default` (у UI — Manual); у проєкті `permissions.defaultMode: "default"` | Run Mode **Allowlist** з порожнім allowlist (режим «Ask Every Time» прибрано у 3.5) | `approval_policy = "untrusted"` × `sandbox_mode = "read-only"` (on-request × workspace-write ≈ acceptEdits) |
 | Рівень «класифікатор вирішує» | `auto` — стартовий режим на Pro/Max/Team з 14.08.2026 | **Auto-review** (типовий з 3.6) | `approvals_reviewer = "auto_review"` |
 | Повний обхід | `bypassPermissions` / `--dangerously-skip-permissions` | Run Everything | `--yolo` (`--full-auto` застарів) |
 | Режим плану | Shift+Tab, `/plan …`, `--permission-mode plan` | Plan (Shift+Tab, `/plan`) | `/plan` |
