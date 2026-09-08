@@ -13,6 +13,8 @@
 - [ ] Node 24, pnpm 11, Git. Порожня тека, напр. `D:\demo\day01`. Жодного іншого `next dev` не запущено.
 - [ ] Резервний клон цього репозиторію поруч: `git clone https://github.com/koldovsky/2026-agentic-engineering-crash-course-day01 day01-backup`
       (fallback на будь-якому кроці: `git checkout step-0N-…` і продовжуємо звідти).
+- [ ] Відкрити шпаргалку в другому вікні: <https://koldovsky.github.io/2026-agentic-engineering-crash-course/day01.html> — усі команди, промпти й файли
+      цього сценарію з кнопкою «копіювати». Без клону файли кроків 2 і 5 беруться звідти.
 - [ ] Прогнати весь сценарій раз від початку до кінця напередодні; перший запуск Vitest із jsdom на Windows — ~20 с.
 
 Таймінг: 1 → 8 хв · 2 → 8 · 3 → 8 · 4 → 7 · 5 → 8 · 6 → 7 · 7 → 14. Плюс 2–3 хв на «що лежить у репо» наприкінці.
@@ -58,6 +60,7 @@ claude
 cp -r ../day01-backup/.claude ./            # settings.json + hooks/ + rules/ (rules — для кроку 3)
 cp -r ../day01-backup/scripts ./
 cp -r ../day01-backup/.agent-log ./
+npm pkg set scripts.agent:log="node scripts/agent-log-summary.mjs"   # cp не зливає package.json
 node scripts/hooks-selftest.mjs
 ```
 
@@ -120,7 +123,8 @@ npx skills add https://github.com/vercel-labs/agent-skills --skill vercel-react-
 **Сказати:** `next-best-practices` більше не існує — знання про Next.js тепер у бандлених доках; skill — для процедур, не для знань.
 Trail of Bits у червні обійшли всі три сканери за годину: читайте SKILL.md і скрипти перед встановленням.
 
-Власний skill: `cp -r ../day01-backup/.agents/skills/agent-log-report .agents/skills/` → `pnpm skills:sync`.
+Власний skill: `cp -r ../day01-backup/.agents/skills/agent-log-report .agents/skills/` →
+`npm pkg set scripts.skills:sync="node scripts/skills-sync.mjs"` → `pnpm skills:sync`.
 У Claude Code: `/skills` → `/agent-log-report` — агент запускає скрипт і повертає таблицю proposed / executed / blocked за цю сесію.
 
 `git add -A && git commit -m "05 skills"`.
