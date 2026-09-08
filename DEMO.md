@@ -11,8 +11,14 @@
 - [ ] Весь показ — у **Git Bash / Windows Terminal з bash**, не в PowerShell (команди нижче — bash). `chcp 65001`, шрифт 18+.
 - [ ] `export CONTEXT7_API_KEY=ctx7sk-…` у тому терміналі, з якого запускатиметься `claude` (ключ: context7.com/dashboard).
 - [ ] Node 24, pnpm 11, Git. Порожня тека, напр. `D:\demo\day01`. Жодного іншого `next dev` не запущено.
-- [ ] Резервний клон цього репозиторію поруч: `git clone https://github.com/koldovsky/2026-agentic-engineering-crash-course-day01 day01-backup`
-      (fallback на будь-якому кроці: `git checkout step-0N-…` і продовжуємо звідти).
+- [ ] Резервний клон — **у робочій теці, до кроку 1**, щоб `day01-backup` опинився поруч із майбутнім `day01`:
+      ```bash
+      cd /d/demo                                     # робоча тека (macOS: cd ~/demo)
+      git clone https://github.com/koldovsky/2026-agentic-engineering-crash-course-day01 day01-backup
+      ls -d day01-backup/.claude day01-backup/scripts # перевірка
+      ```
+      Крок 1 створить `day01` поруч, тому `cp -r ../day01-backup/…` на кроках 2 і 5 знайде файли.
+      (fallback на будь-якому кроці: `git -C ../day01-backup checkout step-0N-…` і копіюємо звідти.)
 - [ ] Відкрити шпаргалку в другому вікні: <https://koldovsky.github.io/2026-agentic-engineering-crash-course/day01.html> — усі команди, промпти й файли
       цього сценарію з кнопкою «копіювати». Без клону файли кроків 2 і 5 беруться звідти.
 - [ ] Прогнати весь сценарій раз від початку до кінця напередодні; перший запуск Vitest із jsdom на Windows — ~20 с.
